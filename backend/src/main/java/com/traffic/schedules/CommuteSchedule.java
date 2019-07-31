@@ -26,15 +26,14 @@ public class CommuteSchedule {
     private GoogleMapsService googleMapsService;
 
     // Will Run every Monday through Friday afrom 5am to 7am every 5 minutes
-    // @Scheduled(cron = "*/5 5-7 * * 1-5 *")
+    @Scheduled(cron = "0 */5 5-7 * * 1-5")
     public void morningCommuteTask() {
         List<TrafficSnapshot> routes = googleMapsService.fetchSnapshot(home, work);
         trafficSnapshotService.storeAll(routes);
     }
 
     // Will Run every Monday through Friday afrom 3pm to 7pm every 5 minutes
-    // @Scheduled(cron = "*/5 15-19 * * 1-5 *")
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0 */5 15-19 * * 1-5")
     public void afternoonCommuteTask() {
         List<TrafficSnapshot> routes = googleMapsService.fetchSnapshot(work, home);
         trafficSnapshotService.storeAll(routes);
