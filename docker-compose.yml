@@ -6,6 +6,8 @@ services:
     environment:
       POSTGRES_DB: traffic-monitor-db
       POSTGRES_PASSWORD: <SUPER SECRET PASSWORD>
+    volumes:
+      - dbdata:/var/lib/postgresql/data
     networks:
       - traffic-monitor-network
 
@@ -18,3 +20,6 @@ services:
 networks:
   traffic-monitor-network:
     driver: bridge
+
+volumes:
+  dbdata:
