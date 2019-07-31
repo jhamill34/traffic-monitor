@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  db:
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_DB: traffic-monitor-db
+      POSTGRES_PASSWORD: <SUPER SECRET PASSWORD>
+    networks:
+      - traffic-monitor-network
+
+  backend:
+    build: ./backend
+    image: traffic-monitor-backend
+    networks:
+      - traffic-monitor-network
+
+networks:
+  traffic-monitor-network:
+    driver: bridge

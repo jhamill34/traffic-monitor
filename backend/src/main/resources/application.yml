@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/traffic-monitor-db
+    username: postgres
+    password: <DEFINED IN COMPOSE>
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+google:
+  maps:
+    key: <SECRET KEY>
+
+locations:
+  home: <HOME ADDRESS>
+  work: <WORK ADDRESS>
