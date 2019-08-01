@@ -5,7 +5,7 @@ services:
     image: postgres
     environment:
       POSTGRES_DB: traffic-monitor-db
-      POSTGRES_PASSWORD: <SUPER SECRET PASSWORD> 
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - dbdata:/var/lib/postgresql/data
     networks:
@@ -16,6 +16,11 @@ services:
     image: traffic-monitor-backend
     networks:
       - traffic-monitor-network
+    environment: 
+      DB_PASSWORD
+      GOOGLE_MAPS_KEY
+      HOME_ADDRESS
+      WORK_ADDRESS
     depends_on: 
       - db
 

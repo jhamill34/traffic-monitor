@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://db:5432/traffic-monitor-db
     username: postgres
-    password: <DEFINED IN COMPOSE>
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -14,8 +14,8 @@ spring:
 
 google:
   maps:
-    key: <SECRET KEY>
+    key: ${GOOGLE_MAPS_KEY}
 
 locations:
-  home: <HOME ADDRESS>
-  work: <WORK ADDRESS>
+  home: ${HOME_ADDRESS}
+  work: ${WORK_ADDRESS}
