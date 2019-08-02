@@ -30,7 +30,7 @@ public class CommuteSchedule {
     private GoogleMapsService googleMapsService;
 
     // Will Run every Monday through Friday afrom 5am to 7am every 5 minutes
-    @Scheduled(cron = "0 */5 5-7 * * MON-FRI", zone="GMT-8")
+    @Scheduled(cron = "0 */5 5-7 * * MON-FRI", zone="GMT-7")
     public void morningCommuteTask() {
         logger.info("Fetching morning commute time...");
         List<TrafficSnapshot> routes = googleMapsService.fetchSnapshot(home, work);
@@ -38,7 +38,7 @@ public class CommuteSchedule {
     }
 
     // Will Run every Monday through Friday afrom 3pm to 7pm every 5 minutes
-    @Scheduled(cron = "0 */5 15-19 * * MON-FRI", zone="GMT-8")
+    @Scheduled(cron = "0 */5 15-19 * * MON-FRI", zone="GMT-7")
     public void afternoonCommuteTask() {
         logger.info("Fetching afternoon commute time...");
         List<TrafficSnapshot> routes = googleMapsService.fetchSnapshot(work, home);
